@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+eureka:
+  client:
+    service-uri:
+      defaultZone: http://217.66.96.18:8761/eureka
+  instance:
+    prefer-ip-address: true
