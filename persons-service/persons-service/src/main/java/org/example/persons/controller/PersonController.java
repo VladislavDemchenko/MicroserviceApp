@@ -31,6 +31,12 @@ public class PersonController {
     public PersonDto getPersonWithNotes(@PathVariable Long personId){
         return personService.getWithNoteById(personId);
     }
+
+    @GetMapping("/{id}")
+    public Person getOne(@PathVariable Long id){
+        return personRepository.findById(id)
+                .orElseThrow();
+    }
 }
 
 

@@ -1,9 +1,0 @@
-server:
-  port: 8081
-
-spring:
-  application:
-    name: notes
-  cloud:
-    config:
-      uri: http://localhost:8083

@@ -1,0 +1,11 @@
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      person-service:
+        minimumNumberOfCalls: 5
+        slowCallDurationThreshold: 1000ms
+
+feign:
+  circuitbreaker:
+    enabled: true
