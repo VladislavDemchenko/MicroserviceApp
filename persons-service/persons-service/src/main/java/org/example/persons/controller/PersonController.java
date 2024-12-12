@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/persons")
+@RequestMapping("/api/persons")
 public class PersonController {
 
     private final PersonRepository personRepository;
@@ -27,7 +27,7 @@ public class PersonController {
         return personRepository.findAll();
     }
 
-    @GetMapping("/{personId}")
+    @GetMapping("/personWithNotes/{personId}")
     public PersonDto getPersonWithNotes(@PathVariable Long personId){
         return personService.getWithNoteById(personId);
     }

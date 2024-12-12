@@ -15,14 +15,13 @@ import java.util.List;
 public class PersonService {
 
     private final PersonRepository personRepository;
-//    private final DiscoveryClient discoveryClient;
     private final NotesClient notesClient;
 
 
     public PersonDto getWithNoteById(Long personId){
         var person = personRepository.findById(personId)
                 .orElseThrow();
-        var notes = notesClient.getNoteByPersonId(personId);
+        var notes = notesClient.getNotesByPersonId(personId);
         return new PersonDto(person.getFirstName(), person.getLastName(), notes);
     }
 }

@@ -6,11 +6,11 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient(name = "person-service")
+@FeignClient(name = "persons-service")
 public interface PersonServiceFeignClient {
 
-    @GetMapping("person/{id}")
-    @CircuitBreaker(name = "person-service", fallbackMethod = "defaultPerson")
+    @GetMapping("/api/persons/{id}")
+    @CircuitBreaker(name = "persons-service", fallbackMethod = "defaultPerson")
     PersonDto getById(@PathVariable Long id);
 
     default PersonDto defaultPerson(Long personId, Throwable throwable){

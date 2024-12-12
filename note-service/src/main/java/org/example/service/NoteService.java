@@ -27,4 +27,12 @@ public class NoteService {
         var person = personServiceFeignClient.getById(note.getPersonId());
         return new NoteDto(note.getId(), note.getBody(), person);
     }
+
+    public Note save(Note note) {
+        return noteRepository.save(note);
+    }
+
+    public List<Note> getAllByPerson(Long personId) {
+        return noteRepository.findAllByPersonId(personId);
+    }
 }
