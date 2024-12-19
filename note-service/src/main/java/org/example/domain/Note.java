@@ -6,13 +6,15 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name = "notes")
 @Getter
 @Setter
 @ToString
 @EqualsAndHashCode
-public class Note {
+public class Note implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

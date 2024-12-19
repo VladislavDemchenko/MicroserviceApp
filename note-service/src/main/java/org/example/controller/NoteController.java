@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.domain.Note;
 import org.example.dto.NoteDto;
 import org.example.service.NoteService;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,9 +15,11 @@ import java.util.List;
 public class NoteController {
 
     private final NoteService noteService;
+    private final RabbitTemplate rabbitTemplate;
 
     @PostMapping
     public Note crate(@RequestBody Note note){
+        rabbitTemplate.convertAndSend("note-fanout", "", note);
         return noteService.save(note);
     }
 

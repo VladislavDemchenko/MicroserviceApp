@@ -11,3 +11,4 @@ resilience4j:
 feign:
   circuitbreaker:
     enabled: true
+
