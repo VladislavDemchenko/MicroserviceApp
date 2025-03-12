@@ -1,0 +1,11 @@
+server:
+  port: 8888
+
+spring:
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-location: file:///Users/Vladislav/IdeaProjects/spring cloud demo/config-service/config-service/src/main/resources/config

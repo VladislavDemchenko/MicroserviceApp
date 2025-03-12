@@ -1,0 +1,28 @@
+server:
+  port: 8082
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+
+eureka:
+  client:
+    service-uri:
+      defaultZone: http://217.66.96.18:8761/eureka
+  instance:
+    prefer-ip-address: true
+
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+rabbitmq:
+  exchange: note.exchange
+  queue: note.queue
+  routing-key: note.routing.key

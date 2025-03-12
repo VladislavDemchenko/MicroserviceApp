@@ -1,0 +1,7 @@
+logging:
+  level:
+    root: INFO
+    org.springframework.web: DEBUG
+
+admin:
+  secret: "123123"

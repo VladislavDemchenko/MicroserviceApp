@@ -1,20 +1,16 @@
 package org.example.domain;
 
 import jakarta.persistence.*;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-import org.springframework.security.core.userdetails.UserDetails;
+import lombok.*;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "notes")
-@Getter
-@Setter
-@ToString
-@EqualsAndHashCode
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Note implements Serializable {
 
     @Id
@@ -22,8 +18,28 @@ public class Note implements Serializable {
     private Long id;
 
     @Column(nullable = false)
-    private String body;
+    private String title;
 
-    @Column(nullable = false)
+    @Column(columnDefinition = "TEXT")
+    private String content;
+
+    @Column(name = "created_at", nullable = false)
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
+
+    @Column(name = "person_id", nullable = false)
     private Long personId;
+
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
+        updatedAt = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = LocalDateTime.now();
+    }
 }

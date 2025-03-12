@@ -1,0 +1,37 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+
+
+#
+#  rabbitmq:
+#    host: localhost
+#    port: 5672
+#    username: guest
+#    password: guest
+
+jwt:
+  secret: verySecretKeyThatShouldBeAtLeast64BytesLongForHS512AlgorithmSecurity123456789012
+  expiration: 86400000  # 24 hours in milliseconds
+
+feign:
+  client:
+    config:
+      notes-service:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: full
+#
+note-service:
+  url: http://localhost:8082
+
+rabbitmq:
+  exchange: note.exchange
+  queue: note.queue
+  routing-key: note.routing.key
